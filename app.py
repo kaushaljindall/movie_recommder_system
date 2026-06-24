@@ -11,6 +11,20 @@ TMDB_API_KEY = os.getenv("TMDB_API_KEY")
 
 import requests
 
+import os
+
+from huggingface_hub import hf_hub_download
+import shutil
+
+if not os.path.exists("models/similarity.pkl"):
+    file_path = hf_hub_download(
+        repo_id="ikaushaljindal/movie_recommender-data",
+        filename="similarity.pkl",
+        repo_type="dataset"
+    )
+
+    shutil.copy(file_path, "../models/similarity.pkl")
+
 def fetchPoster(movie_id):
     try:
         url = f"https://api.themoviedb.org/3/movie/{movie_id}?api_key={TMDB_API_KEY}&language=en-US"
