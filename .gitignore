@@ -15,8 +15,7 @@ __pycache__/
 dataset/
 
 
-models/
-*.pkl
+models/similarity.pkl
 
 .vscode/
 
