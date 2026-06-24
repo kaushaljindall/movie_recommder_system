@@ -1,0 +1,7 @@
+ipykenrel
+numpy 
+pandas
+scikit-learn
+nl
+matplotlib
+streamlit 
