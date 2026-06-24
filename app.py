@@ -16,6 +16,8 @@ import os
 from huggingface_hub import hf_hub_download
 import shutil
 
+os.makedirs("models", exist_ok=True)
+
 if not os.path.exists("models/similarity.pkl"):
     file_path = hf_hub_download(
         repo_id="ikaushaljindal/movie_recommender-data",
@@ -23,7 +25,7 @@ if not os.path.exists("models/similarity.pkl"):
         repo_type="dataset"
     )
 
-    shutil.copy(file_path, "../models/similarity.pkl")
+    shutil.copy(file_path, "models/similarity.pkl")
 
 def fetchPoster(movie_id):
     try:
@@ -70,8 +72,8 @@ def recomend(movie_name):
 
 
 
-similarity = pickle.load(open('../models/similarity.pkl', 'rb'))
-movies_list = pickle.load(open('../models/movies_dict.pkl', 'rb'))
+similarity = pickle.load(open('models/similarity.pkl', 'rb'))
+movies_list = pickle.load(open('models/movies_dict.pkl', 'rb'))
 movies = pd.DataFrame(movies_list)
 st.title("Movie Recomender System")
 
